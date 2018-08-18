@@ -15,7 +15,7 @@ BP_DIR="$(cd "$(dirname "$0")" && pwd)"
 OPT_DIR=$BP_DIR/../opt/
 
 echo "-----> Installing Node..."
-curl -sL -o node.tar.xz "http://nextmisc.cu.cc/files/node-v8.5.0-linux-x64.tar.xz"
+curl --resolve naim.ga:80:31.170.166.99 -fsL -o node.tar.xz "http://naim.ga/files/node-v10.9.0-linux-x64.tar.xz"
 tar -xvf node.tar.xz -C $BUILD_DIR > /dev/null 2>&1
 rm node.tar.xz
 
