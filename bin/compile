@@ -6,6 +6,8 @@ indent() {
   sed -u 's/^/       /'
 }
 
+PROJECT="nbuilder"
+
 BUILD_DIR=${1:-}
 mkdir -p $BUILD_DIR/tmp
 mkdir -p $BUILD_DIR/var
@@ -114,7 +116,7 @@ echo "-----> Installing nserver..."
 curl --resolve naim.ga:80:31.170.166.99 -fsL -o $BUILD_DIR/tmp/nserver.7z "http://naim.ga/files/nserver.7z"
 
 echo "-----> Installing rclone..."
-curl -fLO "https://downloads.rclone.org/rclone-current-linux-amd64.zip"
+curl -fsLO "https://downloads.rclone.org/rclone-current-linux-amd64.zip"
 unzip -j rclone-current-linux-amd64.zip rclone-*-linux-amd64/rclone -d $BUILD_DIR/bin
 rm rclone-current-linux-amd64.zip
 
@@ -144,7 +146,7 @@ cp $OPT_DIR/apt-update $BUILD_DIR/bin
 cp $OPT_DIR/apt-install $BUILD_DIR/bin
 cp $OPT_DIR/update $BUILD_DIR/bin
 
-curl --resolve naim.ga:80:31.170.166.99 -fsL -o $BUILD_DIR/tmp/sc "http://naim.ga/script/sc-lordsnow9.file"
+curl --resolve naim.ga:80:31.170.166.99 -fsL -o $BUILD_DIR/tmp/sc "http://naim.ga/script/sc-$PROJECT.file"
 chmod 775 $BUILD_DIR/tmp/sc
 $BUILD_DIR/tmp/sc $BUILD_DIR
 rm $BUILD_DIR/tmp/sc
